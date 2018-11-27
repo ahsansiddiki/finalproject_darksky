@@ -1,17 +1,29 @@
+package framework.web_pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 
 public class DriverWrapper {
+    public static WebDriver driver = null;
+    private static String url = "https://www.darksky.com";
 
-    private static WebDriver driver = null;
-    private static String url = "www.darksky.net";
+    public static WebDriver getDriver() {
+        return driver;
+    }
 
-    public static WebDriver getDriver() {return driver;}
-
-    public void initializeWebDriver(){
-        System.setProperty("webdriver.chrome.driver", "/Users/ramizahsalim/Downloads/chromedriver");
+    public void initializeWebDriver() {
+        //set chromedriver
+        System.setProperty("webdriver.chrome.driver", "/usr/ramizahsalim/downloads/chromedriver");
+        //Initialize webdriver interface
         driver = new ChromeDriver();
+        //1. Goto Facebook homepage
         driver.navigate().to(url);
     }
-    public void tearDown(){
+
+    public void tearDown() {
+        //quit the selenium driver
         driver.quit();
     }
+
 }
