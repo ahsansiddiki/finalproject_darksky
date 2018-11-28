@@ -61,7 +61,7 @@ public class HomePageDarksky extends BasePage {
     public static void getTemperatureRange() {
 
         int numberFound=1;
-        String element = DriverWrapper.getDriver().findElement(By.xpath("//*[@id='week']/a[1]/span[2]")).getText();
+        String element = DriverWrapper.getDriver().findElement(By.xpath("//*[@id='week']/a[1]/span[2]")).getText(); /**Avoid hard coding of locators, rather pass as field variable*/
         String[] parts = element.split("˚");
         String temp1 = parts[0];
         String temp2 = parts[1];
@@ -100,7 +100,7 @@ public class HomePageDarksky extends BasePage {
         List<String> timeline= new ArrayList<>();
         Calendar time = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("ha");
-        String currentTime = sdf.format(time.getTime()).toLowerCase();
+        String currentTime = sdf.format(time.getTime()).toLowerCase(); /** I dont see any use of this line*/
 
         for (int t = 2; t < 24; t += 2) {
             Calendar newTime = Calendar.getInstance();
@@ -120,6 +120,7 @@ public class HomePageDarksky extends BasePage {
             timeline.add(hour);
 
         }
+        /** You shoul use Assertion for verification*/
         if (plusTwo.equals(timeline)) {
             System.out.println("TRUE - Timeline is displayed with two hours incremented \nCurrent+2: " + plusTwo + "\nTimeLine: " + timeline);
         } else {
